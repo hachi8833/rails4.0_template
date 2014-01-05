@@ -49,16 +49,16 @@ group :doc do
 end
 
 # Assets log cleaner
-gem 'quiet_assets'
+# gem 'quiet_assets'
 
 # HTML5 Validator
-gem 'html5_validators'
+# gem 'html5_validators'
 
 # PG/MySQL Log Formatter
-gem 'rails-flog'
+# gem 'rails-flog'
 
 # App configuration
-gem 'figaro'
+# gem 'figaro'
 
 # Use ActiveModel has_secure_password
   gem 'bcrypt-ruby', '~> 3.1.2'
@@ -108,7 +108,7 @@ gem 'foreman'
 gem 'html5_validators'
 
 # PG/MySQL Log Formatter
-gem 'rails-flog'
+# gem 'rails-flog'
 
 # Migration Helper
 gem 'migrant'
@@ -126,7 +126,7 @@ gem 'airbrake'
 gem 'nokogiri'
 
 # App configuration
-gem 'figaro'
+# gem 'figaro'
 
 # Rails/Rack Profiler
 gem 'speed_gun'
