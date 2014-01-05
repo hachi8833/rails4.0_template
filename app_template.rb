@@ -326,19 +326,3 @@ run 'bundle install'
 git :init
 git :add => '.'
 git :commit => "-a -m 'first commit'"
-
-# GitHub
-# ----------------------------------------------------------------
-if !use_bitbucket and yes?('Push GitHub? [yes or ELSE]')
-  git_uri = `git config remote.origin.url`.strip
-  unless git_uri.size == 0
-    say 'Repository already exists:'
-    say "#{git_uri}"
-  else
-    email = ask 'What is your GitHub login E-Mail address?'
-    run "curl -u #{email} -d '{\"name\":\"#{@app_name}\"}' https://api.github.com/user/repos"
-    username = ask 'What is your GitHub username?'
-    git remote: %Q{ add origin git@github.com:#{username}/#{@app_name}.git }
-    git push: %Q{ origin master }
-  end
-end
