@@ -9,7 +9,8 @@ run 'gibo OSX Ruby Rails JetBrains SASS SublimeText > .gitignore' rescue nil
 gsub_file '.gitignore', /^config\/initializers\/secret_token.rb$/, ''
 
 # add to Gemfile
-append_file 'Gemfile', <<-CODE
+run 'rm -rf Gemfile'
+file 'Gemfile' <<-CODE
 source 'https://rubygems.org'
 
 ruby '2.1.0'
@@ -242,7 +243,7 @@ run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml
 
 # application.js(turbolink setting)
 run 'rm -rf app/assets/javascripts/application.js'
-run 'wget https://github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/application.js -P app/assets/javascripts/'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/application.js -P app/assets/javascripts/'
 
 # HAML
 run 'rake haml:replace_erbs'
@@ -256,14 +257,6 @@ insert_into_file 'app/views/layouts/application.html.haml',%(
 
 # Simple Form
 generate 'simple_form:install --bootstrap'
-
-# Figaro
-append_file '.gitignore', <<-FILE
-  config/application.yml
-FILE
-
-run 'wget https://github.com/hachi8833/rails4.0_template/master/config/application.yml -P config/'
-gsub_file 'config/application.yml', /%APP_NAME/, @app_name
 
 # Kaminari config
 generate 'kaminari:config'
