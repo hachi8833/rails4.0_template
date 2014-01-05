@@ -10,7 +10,7 @@ gsub_file '.gitignore', /^config\/initializers\/secret_token.rb$/, ''
 
 # add to Gemfile
 run 'rm -rf Gemfile'
-file 'Gemfile' <<-CODE
+file 'Gemfile', <<-CODE
 source 'https://rubygems.org'
 
 ruby '2.1.0'
