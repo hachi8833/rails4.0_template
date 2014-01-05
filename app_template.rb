@@ -329,5 +329,5 @@ run 'bundle install'
 # ----------------------------------------------------------------
 run 'git flow init'
 # git :init
-# git :add => '.'
-# git :commit => "-a -m 'first commit'"
+git :add => '.'
+git :commit => "-a -m 'first commit'"
