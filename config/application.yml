@@ -1,0 +1,6 @@
+development:
+  hello: 'user'
+test:
+  hello: 'tester'
+production:
+  hello: 'world'
