@@ -1,6 +1,6 @@
 # アプリ名の取得
 @app_name = app_name
-
+@db_password = ENV['DB_PASSWORD']
 # clean file
 run 'rm README.rdoc'
 
@@ -282,7 +282,8 @@ FILE
 run 'rm -rf config/database.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/database.yml -P config/'
 gsub_file 'config/database.yml', /APPNAME/, @app_name
-run "mysql -e create user #{@app_name}"
+gsub_file 'config/database.yml', /PASSWD/, @db_password
+run "mysql -e create user #{@app_name} identified by #{@db_password}"
 run 'bundle exec rake RAILS_ENV=development db:create'
 
 # Rspec/Spring/Guard
@@ -315,7 +316,7 @@ run 'wget https://raw.github.com/jonleighton/spring/master/bin/spring -P bin/'
 run 'sudo chmod a+x bin/spring'
 
 # Guard
-run 'guard init'
+run 'bundle exec guard init'
 gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'spring rspec -f doc' do"
 
 run 'bundle install'
