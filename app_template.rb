@@ -7,6 +7,9 @@ run 'rm README.rdoc'
 # .gitignore
 run 'gibo OSX Ruby Rails JetBrains SASS SublimeText > .gitignore' rescue nil
 gsub_file '.gitignore', /^config\/initializers\/secret_token.rb$/, ''
+append_file '.gitignore', <<-CODE
+config/database.yml
+CODE
 
 # add to Gemfile
 run 'rm -rf Gemfile'
@@ -282,6 +285,7 @@ FILE
 run 'rm -rf config/database.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/database.yml -P config/'
 gsub_file 'config/database.yml', /APPNAME/, @app_name
+run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 run "mysql -e create user #{@app_name} identified by #{@db_password}"
 run 'bundle exec rake RAILS_ENV=development db:create'
@@ -321,8 +325,9 @@ gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'spring rspec -f d
 
 run 'bundle install'
 
-# git init
+# git flow init
 # ----------------------------------------------------------------
-git :init
-git :add => '.'
-git :commit => "-a -m 'first commit'"
+run 'git flow init'
+# git :init
+# git :add => '.'
+# git :commit => "-a -m 'first commit'"
