@@ -226,6 +226,8 @@ application  do
       g.routing_specs false
       g.helper_specs false
       g.request_specs false
+      g.feature_specs false
+      g.decorator_specs false
       g.assets false
       g.helper false
     end
