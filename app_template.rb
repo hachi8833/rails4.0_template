@@ -146,6 +146,16 @@ gem 'prawn-rails'
 # refactoring suggestions
 gem 'rails_best_practices'
 
+# doorkeeper: OAuth2 authentication
+# gem 'doorkeeper'
+
+#------- reserverd ---------#
+# friently_id: changes URL to non-REST string form
+# gem 'friendly_id'
+
+# ransack: search form
+# gem 'ransack'
+
 group :development do
   # Converter erb => haml
   gem 'erb2haml'
