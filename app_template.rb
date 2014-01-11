@@ -181,6 +181,8 @@ group :development, :test do
   # Rspec
   gem 'rspec-rails'
   gem 'rake_shared_context'
+  gem 'capybara'
+  gem "simplecov", require: false
 
   # fixtureの代わり
   gem "factory_girl_rails"
@@ -226,10 +228,10 @@ application  do
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.view_specs false
       g.controller_specs false
-      g.routing_specs false
+      g.routing_specs true
       g.helper_specs false
       g.request_specs false
-      g.feature_specs false
+      g.feature_specs true
       g.decorator_specs false
       g.assets false
       g.helper false
@@ -302,6 +304,9 @@ generate 'rspec:install'
 run "echo '--color --drb -f d' > .rspec"
 
 insert_into_file 'spec/spec_helper.rb',%(
+  require 'simplecov'
+  SimpleCov.start
+
   config.before :suite do
     DatabaseRewinder.clean_all
   end
