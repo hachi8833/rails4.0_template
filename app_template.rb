@@ -158,6 +158,7 @@ group :development, :test do
 
   # Rails application preloader
   gem 'spring'
+  gem 'spring-commands-rspec'
 
   # Railsコンソールの多機能版
   gem 'pry-rails'
@@ -331,7 +332,7 @@ run 'sudo chmod a+x bin/spring'
 
 # Guard
 run 'bundle exec guard init'
-gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'spring rspec -f doc' do"
+gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'bundle exec spring rspec -f doc' do"
 
 run 'bundle install'
 
