@@ -189,14 +189,18 @@ group :development, :test do
   # pryの色付けをしてくれる
   gem 'awesome_print'
 
+  # coverage
+  gem "simplecov", require: false
+
   # Rspec
   gem 'rspec-rails'
   gem 'rake_shared_context'
   gem 'capybara'
-  gem "simplecov", require: false
 
   # fixtureの代わり
   gem "factory_girl_rails"
+  gem 'faker'
+  gem 'faker-japanese'
 
   # テスト環境のテーブルをきれいにする
   gem 'database_rewinder'
