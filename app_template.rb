@@ -18,129 +18,118 @@ source 'https://rubygems.org'
 
 ruby '2.1.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+## 共通
+# 最新のrails
 gem 'rails', '4.0.2'
 
-# Use devise for user authentication
+# devise: ユーザー認証gem
 gem 'devise'
 
-# Use mysql as the database for Active Record
+# mysql コネクタgem
 gem 'mysql2'
 
-# Use SCSS for stylesheets
+# SASS スタイルシート導入
 gem 'sass', '3.3.0.rc.1'
 gem 'sass-rails', '~> 4.0.0'
 
-# Use Uglifier as compressor for JavaScript assets
+# LESSにしたい人はこちら
+#gem 'less-rails'
+
+# Uglifier: JavaScriptを圧縮&難読化
 gem 'uglifier', '>= 1.3.0'
 
-# Use CoffeeScript for .js.coffee assets and views
+# CoffeeScript導入
 gem 'coffee-rails', '~> 4.0.0'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# therubyracerはV8 JavaScriptエンジンをrubyから使うためのgemだが、コンパイルが始まるとインストールに時間がかかるので外してある。参照: http://d.hatena.ne.jp/suu-g/20121222/1356189597
 # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Jquery導入
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Turbolinks導入。邪魔だが依存関係があるので入れてある
 gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # APIドキュメントを生成するには: bundle exec rake doc:rails generates the API under doc/api
   gem 'sdoc', require: false
 end
 
-# Assets log cleaner
-# gem 'quiet_assets'
+# アセットのログを削除
+gem 'quiet_assets'
 
-# HTML5 Validator
-# gem 'html5_validators'
+# HTML5 validation
+gem 'html5_validators'
 
-# PG/MySQL Log Formatter
-# gem 'rails-flog'
+# PG/MySQL ログフォーマッタ
+gem 'rails-flog'
 
-# App configuration
+# 秘密鍵などをENV経由で利用する https://github.com/laserlemon/figaro
 # gem 'figaro'
 
-# Use ActiveModel has_secure_password
+# ActiveModel でパスワード暗号化に使用。http://bakunyo.hatenablog.com/entry/2013/05/26/bcrypt-ruby%E3%82%92Rails%E3%81%A7%E4%BD%BF%E3%81%86
   gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use Capistrano for deployment
+# デプロイ自動化 http://labs.gree.jp/blog/2013/12/10084/
   gem 'capistrano', group: :development
 
-# Use debugger
+# エラー表示はbetter_errors一択
 # gem 'debugger', group: [:development, :test]
   gem 'better_errors'
 
 # Bower Manager => https://rails-assets.org/
 source 'https://rails-assets.org'
 
-# turbolinks support
+# jqueryでのturbolinksサポート
 gem 'jquery-turbolinks'
 
-# Source Map
+# SourceMaps (圧縮されたJavaScriptのバグをブラウザ上でトラックする) http://www.publickey1.jp/blog/12/javascriptcoffeescriptsource_maps.html
 gem 'coffee-rails-source-maps'
 gem 'sass-rails-source-maps'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-# CSS Support
-#gem 'less-rails'
-
-# App Server
-# gem 'puma'
-
-# Presenter Layer
+# プレゼンター層の追加
 gem 'draper'
 
-# Haml
+# Hamlの導入
 gem 'haml-rails'
 
-# Assets log cleaner
-gem 'quiet_assets'
-
-# Form Builders
+# フォーム作成支援 http://www.ohmyenter.com/?p=197
 gem 'simple_form'
 
-# # Process Management
-gem 'foreman'
+# herokuでプロセス管理する場合に使用 http://www.ownway.info/Ruby/index.php?foreman/about
+# gem 'foreman'
 
-# HTML5 Validator
-gem 'html5_validators'
+# ページ切り替え処理
+# gem 'kaminari' http://memo.yomukaku.net/entries/238
 
-# PG/MySQL Log Formatter
-# gem 'rails-flog'
-
-# Migration Helper
-gem 'migrant'
-
-# Pagenation
-gem 'kaminari'
-
-# NewRelic
+# パフォーマンス管理・サービス監視 NewRelic https://github.com/newrelic/rpm
 gem 'newrelic_rpm'
 
-# Airbrake
-gem 'airbrake'
+# エラー時にメール通知 http://www.slideshare.net/morimorihoge1/gem-24158289
+# gem 'airbrake'
 
-# HTML Parser
-gem 'nokogiri'
+# HTML/XMLパーサー http://nokogiri.org/
+# gem 'nokogiri'
 
-# App configuration
-# gem 'figaro'
+# 重たい処理を非同期で実行 http://blog.nzm-o.com/item/222
+# gem 'delayed_job'
+
+# cron処理 http://morizyun.github.io/blog/whenever-gem-rails-ruby-capistrano/
+# gem 'whenever'
+
+# 添付ファイルをActiveRecord透過で保存できる (ImageMagick必要) https://github.com/thoughtbot/paperclip
+# gem 'paperclip'
 
 # Rails/Rack Profiler
-gem 'speed_gun'
+# gem 'speed_gun'
 
 # Hash extensions
-gem 'hashie'
+# gem 'hashie'
 
-# PDF support
+# PDFサポート。ただしMIMEタイプがらみでwarningが出る。
 gem 'prawn-rails'
 
 # refactoring suggestions
@@ -159,6 +148,11 @@ gem 'rails_best_practices'
 group :development do
   # Converter erb => haml
   gem 'erb2haml'
+
+  # view/cssの更新監視・ブラウザリロード
+  gem 'guard-livereload'
+  gem 'em-websocket'
+
 end
 
 group :development, :test do
@@ -176,6 +170,9 @@ group :development, :test do
   # pryの入力に色付け
   gem 'pry-coolline'
 
+  # pryの色付けをしてくれる
+  gem 'awesome_print'
+
   # デバッカー
   gem 'pry-byebug'
 
@@ -185,9 +182,6 @@ group :development, :test do
   # PryでのSQLの結果を綺麗に表示
   gem 'hirb'
   gem 'hirb-unicode'
-
-  # pryの色付けをしてくれる
-  gem 'awesome_print'
 
   # coverage
   gem "simplecov", require: false
@@ -202,6 +196,12 @@ group :development, :test do
   gem 'faker'
   gem 'faker-japanese'
 
+  # HTTP requestのモックアップ作成 http://d.hatena.ne.jp/kitamomonga/20100325/ruby_hello_webmock
+  gem 'webmock'
+
+  # 追加マッチャー集 http://morizyun.github.io/blog/shoulda-matchers-rspec-matcher/
+  gem 'shoulda-matchers'
+
   # テスト環境のテーブルをきれいにする
   gem 'database_rewinder'
 
@@ -209,6 +209,10 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-spring'
+
+  # Gemfileが更新されたら自動でbundle installを実行
+  gem 'guard-bundler'
+
 end
 
 group :production, :staging do
@@ -338,7 +342,7 @@ insert_into_file 'spec/spec_helper.rb',%(
   config.include FactoryGirl::Syntax::Methods
 ), after: 'RSpec.configure do |config|'
 
-insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_girl_rails'", after: "require 'rspec/rails'"
+insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_girl_rails'", "\nrequire 'simplecov'", "\nrequire 'shoulda-matchers'", after: "require 'rspec/rails'"
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # Spring
