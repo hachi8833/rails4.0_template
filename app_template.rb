@@ -212,7 +212,7 @@ run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 db_password = "'" + @db_password + "'"
 #run "mysql -e create user  identified by #{@db_password}"
-run "mysql -e GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};"
+run "mysql -u root -p -e GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};"
 sleep 1
 run 'bundle exec rake RAILS_ENV=development db:create'
 run 'bundle exec rake RAILS_ENV=test db:create'
