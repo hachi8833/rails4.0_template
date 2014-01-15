@@ -60,7 +60,7 @@ group :test do
   gem 'capybara' #ブラウザのテストに使う
   gem 'faker' #それっぽいテストデータを生成する
   gem 'faker-japanese'
-  gem 'poltergeist' #phantomjsをインストールする必要あり
+  gem 'poltergeist' #phantomjsをインストールする必要あり。スクショも撮れる
   gem "simplecov", require: false #カバレッジ
   gem 'database_rewinder'   # テスト環境のテーブルをきれいにする
 end
@@ -210,8 +210,12 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/datab
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
-run "mysql -e create user #{@app_name} identified by #{@db_password}"
+db_password = "'" + @db_password + "'"
+#run "mysql -e create user  identified by #{@db_password}"
+run "mysql -e GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};"
+sleep 1
 run 'bundle exec rake RAILS_ENV=development db:create'
+run 'bundle exec rake RAILS_ENV=test db:create'
 
 # Rspec/Spring/Guard
 # ----------------------------------------------------------------
@@ -238,7 +242,15 @@ insert_into_file 'spec/spec_helper.rb',%(
   config.include FactoryGirl::Syntax::Methods
 ), after: 'RSpec.configure do |config|'
 
-insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_girl_rails'", "\nrequire 'simplecov'", "\nrequire 'shoulda-matchers'", after: "require 'rspec/rails'"
+insert_into_file 'spec/spec_helper.rb',
+                  "\nrequire 'factory_girl_rails'",
+                  "\nrequire 'simplecov'",
+                  "\nrequire 'shoulda-matchers'",
+                  "\nrequire 'capybara'",
+                  "\nrequire 'capybara/rspec'",
+                  "\nrequire 'capybara/poltergeist'",
+                  "\nCapybara.javascript_driver = :poltergeist",
+                  after: "require 'rspec/rails'"
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # Spring
