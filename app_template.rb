@@ -29,8 +29,8 @@ gem 'devise'
 gem 'mysql2'
 
 # SASS スタイルシート導入
-gem 'sass', '3.3.0.rc.1'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass'
+gem 'sass-rails'
 
 # LESSにしたい人はこちら
 #gem 'less-rails'
