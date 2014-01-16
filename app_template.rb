@@ -35,7 +35,7 @@ gem 'ransack' #簡易検索機能
 gem 'simple_form' # フォーム作成支援 http://www.ohmyenter.com/?p=197
 
 group :development do
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler' #パフォーマンス測定
 end
 
 group :development, :test do
@@ -211,8 +211,9 @@ gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 db_password = "'" + @db_password + "'"
+sql =  '"' + "GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};" + '"'
 #run "mysql -e create user  identified by #{@db_password}"
-run "mysql -u root -p -e GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};"
+run "mysql -u root -p -e #{sql}"
 sleep 1
 run 'bundle exec rake RAILS_ENV=development db:create'
 run 'bundle exec rake RAILS_ENV=test db:create'
@@ -258,8 +259,8 @@ gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 # run 'sudo chmod a+x bin/spring'
 
 # Guard
-# run 'bundle exec guard init'
-# gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'bundle exec spring rspec -f doc' do"
+run 'bundle exec guard init'
+gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'bundle exec spring rspec -f doc' do"
 
 run 'bundle install'
 
