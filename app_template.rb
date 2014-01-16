@@ -112,9 +112,9 @@ end
 group :development, :test do
   # gem 'rake_shared_context'
   # gem 'webmock'   # HTTP requestのモックアップ作成 http://d.hatena.ne.jp/kitamomonga/20100325/ruby_hello_webmock
-  # gem 'guard' #ファイル更新をウオッチ
-  # gem 'guard-rspec'
-  # gem 'guard-spring'
+  gem 'guard' #ファイル更新をウオッチ
+  gem 'guard-rspec'
+  gem 'guard-spring'
   # gem 'guard-bundler' # Gemfileが更新されたら自動でbundle installを実行
 end
 
