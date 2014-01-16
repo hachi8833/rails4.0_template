@@ -13,7 +13,7 @@ development:
   encoding: utf8
   database: APPNAME_development
   pool: 5
-  username: APPNAME
+  username: root
   password: PASSWD
   socket: /tmp/mysql.sock
 
@@ -25,7 +25,7 @@ test:
   encoding: utf8
   database: APPNAME_test
   pool: 5
-  username: APPNAME
+  username: root
   password: PASSWD
   socket: /tmp/mysql.sock
 
@@ -35,5 +35,5 @@ production:
   database: APPNAME_production
   pool: 5
   username: APPNAME
-  password: PASSWD
+  password: setpassword
   socket: /tmp/mysql.sock

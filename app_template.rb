@@ -207,14 +207,9 @@ generate 'simple_form:install --bootstrap'
 # Database
 run 'rm -rf config/database.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/database.yml -P config/'
-gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 db_password = "'" + @db_password + "'"
-sql =  '"' + "GRANT ALL ON #{@app_name}.* TO #{@app_name}@'%' IDENTIFIED BY #{db_password};" + '"'
-#run "mysql -e create user  identified by #{@db_password}"
-run "mysql -u root -p -e #{sql}"
-sleep 1
 run 'bundle exec rake RAILS_ENV=development db:create'
 run 'bundle exec rake RAILS_ENV=test db:create'
 
