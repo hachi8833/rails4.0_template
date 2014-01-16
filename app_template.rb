@@ -207,6 +207,7 @@ generate 'simple_form:install --bootstrap'
 # Database
 run 'rm -rf config/database.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/database.yml -P config/'
+gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'cp config/database.yml config/database_sample.yml'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 db_password = "'" + @db_password + "'"
@@ -238,20 +239,17 @@ insert_into_file 'spec/spec_helper.rb',%(
   config.include FactoryGirl::Syntax::Methods
 ), after: 'RSpec.configure do |config|'
 
-insert_into_file 'spec/spec_helper.rb',
-                  "\nrequire 'factory_girl_rails'",
-                  "\nrequire 'simplecov'",
-                  "\nrequire 'shoulda-matchers'",
-                  "\nrequire 'capybara'",
-                  "\nrequire 'capybara/rspec'",
-                  "\nrequire 'capybara/poltergeist'",
-                  "\nCapybara.javascript_driver = :poltergeist",
-                  after: "require 'rspec/rails'"
-gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
+insert_into_file 'spec/spec_helper.rb',%(
+  require 'factory_girl_rails'
+  require 'simplecov'
+  require 'shoulda-matchers'
+  require 'capybara'
+  require 'capybara/rspec'
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist
+), after: "require 'rspec/rails'"
 
-# Spring
-# run 'wget https://raw.github.com/jonleighton/spring/master/bin/spring -P bin/'
-# run 'sudo chmod a+x bin/spring'
+gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # Guard
 run 'bundle exec guard init'
