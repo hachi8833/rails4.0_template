@@ -145,7 +145,7 @@ application  do
       g.controller_specs false
       g.routing_specs true
       g.helper_specs false
-      g.request_specs false
+      g.request_specs true
       g.feature_specs true
       g.decorator_specs true
       g.assets false
