@@ -37,6 +37,7 @@ gem 'angularjs-rails'
 
 group :development do
   gem 'rack-mini-profiler' #パフォーマンス測定
+  gem 'rails-erd' #rake erdでERD図自動生成
 end
 
 group :development, :test do
