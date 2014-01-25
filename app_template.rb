@@ -2,7 +2,7 @@
 @app_name = app_name
 @db_password = ENV['DB_PASSWORD']
 # clean file
-run 'mv README.rdoc README.md'
+# run 'mv README.rdoc README.md'
 
 # .gitignore
 run 'gibo OSX Ruby Rails JetBrains SASS SublimeText > .gitignore' rescue nil
