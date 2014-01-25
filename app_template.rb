@@ -251,7 +251,9 @@ insert_into_file 'spec/spec_helper.rb',%(
   Capybara.javascript_driver = :poltergeist
 ), after: "require 'rspec/rails'"
 
-insert_into_file 'config/environments/development.rb',%(Rack::MiniProfiler.config.position = 'right'), after: 'config.assets.debug = true'
+insert_into_file 'config/environments/development.rb',%(
+  Rack::MiniProfiler.config.position = 'right'
+), after: 'config.assets.debug = true'
 
 gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 
