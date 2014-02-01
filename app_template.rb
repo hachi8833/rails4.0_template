@@ -37,7 +37,8 @@ gem 'angularjs-rails'
 
 group :development do
   gem 'rack-mini-profiler' #パフォーマンス測定
-  gem 'rails-erd' #rake erdでERD図自動生成
+  gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
+  gem 'rails_best_practices' # リファクタリングのアシスタント
 end
 
 group :development, :test do
@@ -79,6 +80,7 @@ end
 # オプション ############
 # gem 'devise' #ユーザー認証
 # gem 'sqlite3' #
+#  gem 'rails-erd' #rake erdでERD図自動生成
 # gem 'therubyracer', platforms: :ruby
 # gem 'quiet_assets' # アセットのログを削除
 # gem 'html5_validators' # フォーム入力の自動バリデーションhttps://github.com/amatsuda/html5_validators
@@ -100,7 +102,6 @@ end
 # gem 'speed_gun' #パフォーマンス測定 http://rosylilly.hatenablog.com/entry/2013/12/03/184748
 # gem 'hashie' # Hashの拡張
 # gem 'prawn-rails' # PDFサポート。ただしMIMEタイプがらみでwarningが出る。
-# gem 'rails_best_practices' # リファクタリングのアシスタント
 # gem 'doorkeeper' #OAuth2認証
 # gem 'friendly_id' #URLをクエリ形式にする
 
