@@ -188,6 +188,7 @@ file 'config/initializers/secret_token.rb', <<-FILE
 FILE
 
 # set Japanese locale
+generate 'i18n_locale ja'
 # run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
 run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
 
