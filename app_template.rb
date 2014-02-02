@@ -34,6 +34,7 @@ gem 'draper' #Presenter層の追加
 gem 'ransack' #簡易検索機能
 gem 'simple_form' # フォーム作成支援 http://www.ohmyenter.com/?p=197
 gem 'angularjs-rails'
+gem 'annotate' #bundle exec annotateでモデルにスキーマコメントを追加
 
 group :development do
   gem 'rack-mini-profiler' #パフォーマンス測定
@@ -141,6 +142,8 @@ application  do
 
     # generatorの設定
     config.generators do |g|
+      g.assets false
+      g.helper false
       g.orm :active_record
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => true
