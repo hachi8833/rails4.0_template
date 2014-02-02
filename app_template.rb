@@ -188,7 +188,6 @@ file 'config/initializers/secret_token.rb', <<-FILE
 FILE
 
 # set Japanese locale
-generate 'i18n_locale ja'
 # run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
 run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
 
@@ -322,7 +321,9 @@ run 'bundle install'
 # git flow init
 run 'git flow init'
 
-puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
+generate 'i18n_locale ja'
 
-puts "マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
-puts "モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
+puts  "●bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
+
+puts "●マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
+puts "●モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
