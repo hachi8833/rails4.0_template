@@ -1,4 +1,4 @@
-a# アプリ名の取得
+# アプリ名の取得
 @app_name = app_name
 @db_password = ENV['DB_PASSWORD']
 # clean file
