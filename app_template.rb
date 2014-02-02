@@ -224,6 +224,8 @@ insert_into_file 'app/views/layouts/application.html.haml',%(
 # Simple Form
 generate 'simple_form:install --bootstrap'
 
+run 'https://raw2.github.com/MiraitSystems/enju_trunk/master/config/locales/simple_form.ja.yml -P config/locales/'
+
 # Figaro
 generate 'figaro:install'
 
