@@ -42,6 +42,7 @@ group :development do
   gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
+  gem 'ruby-growl' #通知システムGrowlとやりとり xmpp4r gemも必要
 end
 
 group :development, :test do
@@ -278,11 +279,7 @@ insert_into_file 'config/environments/development.rb',%(
     Bullet.alert = true
     Bullet.bullet_logger = true
     Bullet.console = true
-    Bullet.growl = true
-    Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
-                    :password => 'bullets_password_for_jabber',
-                    :receiver => 'your_account@jabber.org',
-                    :show_online_status => true }
+    Bullet.growl = true # Growlのインストールが必要
     Bullet.rails_logger = true
     Bullet.airbrake = true
     Bullet.add_footer = true
