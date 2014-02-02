@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem 'thin' # ローカルweb server
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
@@ -177,7 +178,7 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/j
 # HAML
 run 'rake haml:replace_erbs'
 
-# Bootstrap/Bootswach/Font-Awaresome
+# Bootstrap/Bootswach/Font-Awesome
 insert_into_file 'app/views/layouts/application.html.haml',%(
 %script{:src=>'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'}
 %link{:href=>'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', :rel=>'stylesheet'}
