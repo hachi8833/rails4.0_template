@@ -318,5 +318,5 @@ run 'bundle install'
 # git flow init
 run 'git flow init'
 
-puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」を実行すること"
+puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
 
