@@ -39,6 +39,7 @@ gem 'simple_form' # フォーム作成支援 http://www.ohmyenter.com/?p=197
 gem 'angularjs-rails'
 gem 'annotate' #bundle exec annotateでモデルにスキーマコメントを追加
 gem 'figaro' # 秘密鍵などをENV経由で利用する https://github.com/laserlemon/figaro
+gem 'i18n_generators' # ja.ymlの取得と生成
 
 group :development do
   gem 'rack-mini-profiler' #パフォーマンス測定
@@ -187,7 +188,7 @@ file 'config/initializers/secret_token.rb', <<-FILE
 FILE
 
 # set Japanese locale
-run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
+# run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
 run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
 
 # application.js(turbolink setting)
@@ -323,3 +324,4 @@ run 'git flow init'
 puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
 
 puts "マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
+puts "モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
