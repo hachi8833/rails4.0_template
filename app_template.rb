@@ -1,4 +1,4 @@
-# アプリ名の取得
+a# アプリ名の取得
 @app_name = app_name
 @db_password = ENV['DB_PASSWORD']
 # clean file
@@ -35,11 +35,13 @@ gem 'ransack' #簡易検索機能
 gem 'simple_form' # フォーム作成支援 http://www.ohmyenter.com/?p=197
 gem 'angularjs-rails'
 gem 'annotate' #bundle exec annotateでモデルにスキーマコメントを追加
+gem 'figaro' # 秘密鍵などをENV経由で利用する https://github.com/laserlemon/figaro
 
 group :development do
   gem 'rack-mini-profiler' #パフォーマンス測定
   gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
   gem 'rails_best_practices' # リファクタリングのアシスタント
+  gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
 end
 
 group :development, :test do
@@ -82,12 +84,16 @@ end
 # オプション ############
 # gem 'devise' #ユーザー認証
 # gem 'sqlite3' #
-#  gem 'rails-erd' #rake erdでERD図自動生成
+# gem 'rails-erd' #rake erdでERD図自動生成
+# gem 'acts-as-taggable-on' #SEO用タグ生成 http://morizyun.github.io/blog/acts-as-taggable-on-gem-rails/
+# gem 'carrierwave' #画像アップロード用
+# gem 'paranoia' #論理削除 https://github.com/radar/paranoia
 # gem 'therubyracer', platforms: :ruby
 # gem 'quiet_assets' # アセットのログを削除
 # gem 'html5_validators' # フォーム入力の自動バリデーションhttps://github.com/amatsuda/html5_validators
+# gem 'jpmobile' #スマホとPCのビュー自動切り替え
+# gem 'rails_autolink' #URLを自動的にリンク化する
 # gem 'rails-flog' # PG/MySQL ログフォーマッタ
-# gem 'figaro' # 秘密鍵などをENV経由で利用する https://github.com/laserlemon/figaro
 # gem 'bcrypt-ruby', '~> 3.1.2' # ActiveModel でパスワード暗号化に使用。http://bakunyo.hatenablog.com/entry/2013/05/26/bcrypt-ruby%E3%82%92Rails%E3%81%A7%E4%BD%BF%E3%81%86
 # gem 'capistrano', group: :development # デプロイ自動化 http://labs.gree.jp/blog/2013/12/10084/
 # SourceMaps (圧縮されたJavaScriptのバグをブラウザ上でトラックする) http://www.publickey1.jp/blog/12/javascriptcoffeescriptsource_maps.html
@@ -101,6 +107,9 @@ end
 # gem 'delayed_job' # 重たい処理を非同期で実行 http://blog.nzm-o.com/item/222
 # gem 'whenever' # cron処理 http://morizyun.github.io/blog/whenever-gem-rails-ruby-capistrano/
 # gem 'paperclip' # 添付ファイルをActiveRecord透過で保存できる (ImageMagick必要) https://github.com/thoughtbot/paperclip
+# gem 'roo' #Excelやcsvを透過的に扱える
+# gem 'thinreports' #高品質なPDF帳票作成ライブラリ http://www.thinreports.org/
+# gem 'virtus' #rubyのクラスを拡張できる https://github.com/solnic/virtus
 # gem 'speed_gun' #パフォーマンス測定 http://rosylilly.hatenablog.com/entry/2013/12/03/184748
 # gem 'hashie' # Hashの拡張
 # gem 'prawn-rails' # PDFサポート。ただしMIMEタイプがらみでwarningが出る。
@@ -128,7 +137,7 @@ CODE
 # install gems
 run 'bundle install --path vendor/bundle'
 
-# set config/`rb
+# set config/application.rb
 application  do
   %q{
     # Set timezone
@@ -258,6 +267,20 @@ insert_into_file 'spec/spec_helper.rb',%(
 
 insert_into_file 'config/environments/development.rb',%(
   Rack::MiniProfiler.config.position = 'right'
+
+  config.after_initialize do
+  Bullet.enable = true
+  Bullet.alert = true
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.growl = true
+  Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+                  :password => 'bullets_password_for_jabber',
+                  :receiver => 'your_account@jabber.org',
+                  :show_online_status => true }
+  Bullet.rails_logger = true
+  Bullet.airbrake = true
+  Bullet.add_footer = true
 ), after: 'config.assets.debug = true'
 
 gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
