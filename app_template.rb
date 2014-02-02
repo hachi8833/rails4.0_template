@@ -115,6 +115,7 @@ end
 # gem 'prawn-rails' # PDFサポート。ただしMIMEタイプがらみでwarningが出る。
 # gem 'doorkeeper' #OAuth2認証
 # gem 'friendly_id' #URLをクエリ形式にする
+# gem 'acts_as_list' #リストの並べ替えや移動を行えるようにする https://github.com/swanandp/acts_as_list
 
 group :development do
   gem 'erb2haml' # Converter erb => haml
@@ -130,6 +131,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spring'
   # gem 'guard-bundler' # Gemfileが更新されたら自動でbundle installを実行
+  # gem 'letter_opener' #メール送信をブラウザ表示に差し替える http://p.tl/01GH
 end
 
 CODE
@@ -199,6 +201,9 @@ insert_into_file 'app/views/layouts/application.html.haml',%(
 
 # Simple Form
 generate 'simple_form:install --bootstrap'
+
+# Figaro
+generate 'figaro:install'
 
 # Kaminari config
 # generate 'kaminari:config'
