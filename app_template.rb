@@ -207,6 +207,20 @@ generate 'bootstrap:layouts application fixed'
 # %link{:href=>'//netdna.bootstrapcdn.com/bootswatch/3.0.3/readable/bootstrap.min.css', :rel=>'stylesheet'}
 # ), after: '= csrf_meta_tags'
 
+ gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
+
+insert_into_file 'app/views/layouts/application.html.haml',%(
+    %meta{ :charset => "UTF-8" }'
+), after: '  %head'
+insert_into_file 'app/views/layouts/application.html.haml',%(
+    .container
+      %header
+      %section
+        = yield
+      %aside
+      %footer
+  ), after: '  %body'
+
 # Simple Form
 generate 'simple_form:install --bootstrap'
 
@@ -293,20 +307,6 @@ insert_into_file 'config/environments/development.rb',%(
   end
 ), after: 'config.assets.debug = true'
 
-# gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
-
-insert_into_file 'app/views/layouts/application.html.haml',%(
-    %meta{ :charset => "UTF-8" }'
-), after: '  %head'
-# insert_into_file 'app/views/layouts/application.html.haml',%(
-#     %div.container
-#       %header
-#       %section
-#         = yield
-#       %aside
-#       %footer
-#   ), after: '  %body'
-
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # Guard
@@ -320,3 +320,4 @@ run 'git flow init'
 
 puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
 
+puts "マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
