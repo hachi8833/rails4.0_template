@@ -30,6 +30,9 @@ gem 'turbolinks'
 gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
 gem 'jbuilder'   # JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
 
+gem 'bootstrap-sass'
+# gem 'bootswatch-rails'
+
 gem 'draper' #Presenter層の追加
 gem 'ransack' #簡易検索機能
 gem 'simple_form' # フォーム作成支援 http://www.ohmyenter.com/?p=197
@@ -42,7 +45,8 @@ group :development do
   gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
-  gem 'ruby-growl' #通知システムGrowlとやりとり xmpp4r gemも必要
+  gem 'ruby-growl' #通知システムGrowlとやりとり
+  gem 'twitter-bootstrap-rails' #generate専用
 end
 
 group :development, :test do
@@ -193,12 +197,15 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/j
 # HAML
 run 'rake haml:replace_erbs'
 
-# Bootstrap/Bootswach/Font-Awesome
-insert_into_file 'app/views/layouts/application.html.haml',%(
-%script{:src=>'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'}
-%link{:href=>'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', :rel=>'stylesheet'}
-%link{:href=>'//netdna.bootstrapcdn.com/bootswatch/3.0.3/simplex/bootstrap.min.css', :rel=>'stylesheet'}
-), after: '= csrf_meta_tags'
+# # Bootstrap/Bootswach/Font-Awesome
+run 'wget http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css -P app/assets/stylesheets/'
+run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesheets/'
+generate 'bootstrap:layouts application fixed'
+# insert_into_file 'app/views/layouts/application.html.haml',%(
+# %script{:src=>'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'}
+# %link{:href=>'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', :rel=>'stylesheet'}
+# %link{:href=>'//netdna.bootstrapcdn.com/bootswatch/3.0.3/readable/bootstrap.min.css', :rel=>'stylesheet'}
+# ), after: '= csrf_meta_tags'
 
 # Simple Form
 generate 'simple_form:install --bootstrap'
@@ -286,19 +293,19 @@ insert_into_file 'config/environments/development.rb',%(
   end
 ), after: 'config.assets.debug = true'
 
-gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
+# gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 
 insert_into_file 'app/views/layouts/application.html.haml',%(
     %meta{ :charset => "UTF-8" }'
 ), after: '  %head'
-insert_into_file 'app/views/layouts/application.html.haml',%(
-    %div.container
-      %header
-      %section
-        = yield
-      %aside
-      %footer
-  ), after: '  %body'
+# insert_into_file 'app/views/layouts/application.html.haml',%(
+#     %div.container
+#       %header
+#       %section
+#         = yield
+#       %aside
+#       %footer
+#   ), after: '  %body'
 
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
@@ -310,3 +317,6 @@ run 'bundle install'
 
 # git flow init
 run 'git flow init'
+
+puts  "bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」を実行すること"
+
