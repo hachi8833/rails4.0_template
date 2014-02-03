@@ -31,6 +31,7 @@ gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
 gem 'jbuilder'   # JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
 
 gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 # gem 'bootswatch-rails'
 
 gem 'draper' #Presenter層の追加
@@ -199,9 +200,11 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/j
 run 'rake haml:replace_erbs'
 
 # # Bootstrap/Bootswach/Font-Awesome
-run 'wget http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css -P app/assets/stylesheets/'
 run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesheets/'
 generate 'bootstrap:layouts application fixed'
+insert_into_file 'app/assets/stylesheets/application.css',%(
+*= require font-awesome
+), after: '*= require_tree .'
 # insert_into_file 'app/views/layouts/application.html.haml',%(
 # %script{:src=>'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'}
 # %link{:href=>'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', :rel=>'stylesheet'}
