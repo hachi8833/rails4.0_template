@@ -190,6 +190,9 @@ FILE
 
 # set Japanese locale
 # run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
+run 'rm -rf config/locales/ja.yml'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/ja.yml -P config/locales/'
+
 run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
 
 # application.js(turbolink setting)
