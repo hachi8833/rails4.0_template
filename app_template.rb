@@ -189,6 +189,7 @@ file 'config/initializers/secret_token.rb', <<-FILE
 FILE
 
 # set Japanese locale
+generate 'i18n_locale ja'
 # run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
 run 'rm -rf config/locales/ja.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/ja.yml -P config/locales/'
@@ -327,7 +328,6 @@ run 'bundle install'
 # git flow init
 run 'git flow init'
 
-generate 'i18n_locale ja'
 
 puts  "●bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
 
