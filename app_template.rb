@@ -18,6 +18,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.0'
 
+#hamlが動くようにするためのおまじない
+gem 'macaddr', '1.6.1'
+
 # regular gems http://www.ohmyenter.com/?p=371
 gem 'rails', '~> 4.0.2'
 gem 'haml-rails'
@@ -202,8 +205,6 @@ run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/l
 run 'rm -rf app/assets/javascripts/application.js'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/application.js -P app/assets/javascripts/'
 
-# HAML
-run 'rake haml:replace_erbs'
 
 # # Bootstrap/Bootswach/Font-Awesome
 run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesheets/'
@@ -217,7 +218,10 @@ insert_into_file 'app/assets/stylesheets/application.css',%(
 # %link{:href=>'//netdna.bootstrapcdn.com/bootswatch/3.0.3/readable/bootstrap.min.css', :rel=>'stylesheet'}
 # ), after: '= csrf_meta_tags'
 
- gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
+# HAML
+run 'rake haml:replace_erbs'
+
+gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 
 insert_into_file 'app/views/layouts/application.html.haml',%(
     %meta{ :charset => "UTF-8" }'
