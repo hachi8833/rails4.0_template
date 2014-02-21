@@ -165,10 +165,11 @@ application  do
       g.orm :active_record
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => true
+      g.fixtures true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.view_specs false
       g.controller_specs false
-      g.routing_specs true
+      g.routing_specs false
       g.helper_specs false
       g.request_specs true
       g.feature_specs true
@@ -183,6 +184,7 @@ application  do
   }
 end
 
+#●Rails 4.1でのsecrets.ymlの扱いについて要チェック
 run 'rm -rf config/initializers/secret_token.rb'
 file 'config/initializers/secret_token.rb', <<-FILE
 #{@app_name.classify}::Application.config.secret_key_base = ENV['SECRET_KEY_BASE'] || '#{`rake secret`}'
