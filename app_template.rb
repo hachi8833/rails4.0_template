@@ -99,7 +99,7 @@ end
 # gem 'carrierwave' #画像アップロード用
 # gem 'paranoia' #論理削除 https://github.com/radar/paranoia
 # gem 'therubyracer', platforms: :ruby
-# gem 'quiet_assets' # アセットのログを削除
+# gem 'quiet_assets' # アセットのログ出力抑制
 # gem 'html5_validators' # フォーム入力の自動バリデーションhttps://github.com/amatsuda/html5_validators
 # gem 'jpmobile' #スマホとPCのビュー自動切り替え
 # gem 'rails_autolink' #URLを自動的にリンク化する
@@ -319,7 +319,7 @@ insert_into_file 'config/environments/development.rb',%(
     Bullet.console = true
     Bullet.growl = true # Growlのインストールが必要
     Bullet.rails_logger = true
-    Bullet.airbrake = true
+    Bullet.airbrake = false
     Bullet.add_footer = true
   end
 ), after: 'config.assets.debug = true'
@@ -354,3 +354,4 @@ puts  "● bootstrapをscaffoldのビューに適用するなら、scaffold実�
 
 puts "● マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
 puts "● モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
+puts "● ブレークポイントを仕込みたいソースコード上にbinding.pryという文字列を仕込むことで、rails serverで起動したコンソール上でブレークポイントを通るときにpryによるデバッガが立ち上がる。"
