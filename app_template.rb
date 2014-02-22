@@ -78,7 +78,7 @@ group :test do
   gem 'faker' #それっぽいテストデータを生成する
   gem 'faker-japanese'
   gem 'poltergeist' #phantomjsをインストールする必要あり。スクショも撮れる
-  gem "simplecov", require: false #カバレッジ
+  gem 'simplecov', require: false #カバレッジ
   gem 'database_rewinder'   # テスト環境のテーブルをきれいにする
 end
 
@@ -283,13 +283,13 @@ insert_into_file 'spec/spec_helper.rb',%(
   require 'simplecov'
   SimpleCov.start
 
-  config.before :suite do
-    DatabaseRewinder.clean_all
-  end
+  # config.before :suite do
+  #   DatabaseRewinder.clean_all
+  # end
 
-  config.after :each do
-    DatabaseRewinder.clean
-  end
+  # config.after :each do
+  #   DatabaseRewinder.clean
+  # end
 
   config.before :all do
     FactoryGirl.reload
@@ -305,6 +305,7 @@ insert_into_file 'spec/spec_helper.rb',%(
   require 'capybara'
   require 'capybara/rspec'
   require 'capybara/poltergeist'
+#  require 'database_rewinder'
   Capybara.javascript_driver = :poltergeist
 ), after: "require 'rspec/rails'"
 
@@ -334,8 +335,22 @@ run 'bundle install'
 # git flow init
 run 'git flow init'
 
+puts "● 「be rails g scaffold 単数形のモデル名」を実行できる。"
+puts "string 文字列
+text  長い文字列
+integer 整数
+float 浮動小数
+decimal 精度の高い小数
+datetime  日時
+timestamp より細かい日時
+time  時間
+date  日付
+binary  バイナリデータ
+boolean Boolean型"
 
-puts  "●bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
+puts "● 中間テーブルでは主キーを無効化し、タイムスタンプ列を削除すること"
 
-puts "●マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
-puts "●モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
+puts  "● bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
+
+puts "● マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
+puts "● モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
