@@ -15,3 +15,5 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require angular
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker.ja

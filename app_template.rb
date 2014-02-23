@@ -208,6 +208,7 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/j
 
 # # Bootstrap/Bootswach/Font-Awesome
 run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesheets/'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/stylesheets/datepicker.css -P app/assets/stylesheets/'
 generate 'bootstrap:layouts application fixed'
 insert_into_file 'app/assets/stylesheets/application.css',%(
 *= require font-awesome
