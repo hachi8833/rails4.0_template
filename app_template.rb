@@ -93,7 +93,6 @@ end
 
 # オプション ############
 # gem 'devise' #ユーザー認証 http://p.tl/wwkN
-# gem 'devise-better_routes' #deviseのルーティングをRESTfulにする http://p.tl/JOoW
 # gem 'sqlite3' #
 # gem 'rails-erd' #rake erdでERD図自動生成
 # gem 'acts-as-taggable-on' #SEO用タグ生成 http://morizyun.github.io/blog/acts-as-taggable-on-gem-rails/
