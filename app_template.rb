@@ -50,7 +50,6 @@ group :development do
   gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
-  gem 'ruby-growl' #通知システムGrowlとやりとり
   gem 'twitter-bootstrap-rails' #generate専用
 end
 
@@ -92,7 +91,7 @@ group :production, :staging do
 end
 
 # オプション ############
-# gem 'devise' #ユーザー認証 http://p.tl/wwkN
+# gem 'devise' #ユーザー認証
 # gem 'sqlite3' #
 # gem 'rails-erd' #rake erdでERD図自動生成
 # gem 'acts-as-taggable-on' #SEO用タグ生成 http://morizyun.github.io/blog/acts-as-taggable-on-gem-rails/
@@ -171,7 +170,7 @@ application  do
       g.fixtures true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.view_specs false
-      g.controller_specs false
+      g.controller_specs true
       g.routing_specs false
       g.helper_specs false
       g.request_specs true
@@ -318,7 +317,7 @@ insert_into_file 'config/environments/development.rb',%(
     Bullet.alert = true
     Bullet.bullet_logger = true
     Bullet.console = true
-    Bullet.growl = true # Growlのインストールが必要
+    Bullet.growl = false
     Bullet.rails_logger = true
     Bullet.airbrake = false
     Bullet.add_footer = true
