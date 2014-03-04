@@ -162,19 +162,17 @@ application  do
 
     # generatorの設定
     config.generators do |g|
-      g.assets false
-      g.helper false
       g.orm :active_record
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => true
       g.fixtures true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.view_specs false
-      g.controller_specs true
+      g.controller_specs true #scaffoldのテスト生成用
       g.routing_specs false
       g.helper_specs false
-      g.request_specs true
-      g.feature_specs true
+      g.request_specs false # パブリックAPIのテスト用
+      g.feature_specs true #結合テスト用
       g.decorator_specs true
       g.assets false
       g.helper false
@@ -359,3 +357,4 @@ puts "● マイグレーション後、bundle exec annotateを実行すると�
 puts "● モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
 puts "● ブレークポイントを仕込みたいソースコード上にbinding.pryという文字列を仕込むことで、rails serverで起動したコンソール上でブレークポイントを通るときにpryによるデバッガが立ち上がる。"
 puts "● マイグレーションファイルの生成は「be rails g migration Addカラム名Toテーブル名 カラム名:型名」"
+puts "● Launchyをインストールしてあるので、RSpecのデバッグに save_andOpen_pageが使える"
