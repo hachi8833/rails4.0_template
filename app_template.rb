@@ -16,7 +16,7 @@ run 'rm -rf Gemfile'
 file 'Gemfile', <<-CODE
 source 'https://rubygems.org'
 
-ruby '2.1.0'
+ruby '2.1.1'
 
 #hamlが動くようにするためのおまじない
 gem 'macaddr', '1.6.1'
