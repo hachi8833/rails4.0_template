@@ -265,7 +265,7 @@ generate 'figaro:install'
 run 'rm -rf config/database.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/database.yml -P config/'
 gsub_file 'config/database.yml', /APPNAME/, @app_name
-run 'cp config/database.yml config/database_sample.yml'
+run 'cp config/database.yml config/database.yml.sample'
 gsub_file 'config/database.yml', /PASSWD/, @db_password
 db_password = "'" + @db_password + "'"
 run 'bundle exec rake RAILS_ENV=development db:create'
@@ -357,4 +357,4 @@ puts "● マイグレーション後、bundle exec annotateを実行すると�
 puts "● モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
 puts "● ブレークポイントを仕込みたいソースコード上にbinding.pryという文字列を仕込むことで、rails serverで起動したコンソール上でブレークポイントを通るときにpryによるデバッガが立ち上がる。"
 puts "● マイグレーションファイルの生成は「be rails g migration Addカラム名Toテーブル名 カラム名:型名」"
-puts "● Launchyをインストールしてあるので、RSpecのデバッグに save_andOpen_pageが使える"
+puts "● Launchyをインストールしてあるので、RSpecのデバッグに save_and_open_pageが使える"
