@@ -184,7 +184,7 @@ application  do
   }
 end
 
-#●Rails 4.1でのsecrets.ymlの扱いについて要チェック
+#●Rails 4.1でのsecrets.ymlの扱いの変更について要対応
 run 'rm -rf config/initializers/secret_token.rb'
 file 'config/initializers/secret_token.rb', <<-FILE
 #{@app_name.classify}::Application.config.secret_key_base = ENV['SECRET_KEY_BASE'] || '#{`rake secret`}'
@@ -195,8 +195,6 @@ generate 'i18n_locale ja'
 # run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
 run 'rm -rf config/locales/ja.yml'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/ja.yml -P config/locales/'
-
-run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
 
 # application.js(turbolink setting)
 run 'rm -rf app/assets/javascripts/application.js'
@@ -335,6 +333,23 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/initi
 
 # git flow init
 run 'git flow init'
+
+# devise
+if yes?('Deviseをモデル:Userでインストールしますか?')
+  gem 'devise'
+  gsub_file 'Gemfile', "# gem 'devise' #ユーザー認証", 'gem 'devise' #ユーザー認証'
+  run 'bundle install'
+  run 'bundle exec rails generate devise:install'
+  run 'rm -rf app/views/layouts/application.html.yml'
+  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.yml -P app/views/layouts/'
+  run 'bundle exec rails generate devise user'
+  run 'bundle exec rake db:migrate'
+  run 'bundle exec rails generate devise:views'
+  run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
+  insert_into_file 'app/controllers/application_controller.rb',%(
+  before_action:authenticate_user!
+), after: '  protect_from_forgery with: :exception'
+end
 
 puts "● 「be rails g scaffold 単数形のモデル名」を実行できる。"
 puts "string 文字列

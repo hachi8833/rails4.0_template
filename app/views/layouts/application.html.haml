@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{ :charset => "UTF-8" }'
+    %title Travelfee
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container
+      %header
+      %section
+        %p.navbar-text.pull-right
+          -if user_signed_in?
+            現在ログイン中のユーザー: #{current_user.email}.
+            #{link_to 'プロファイルを編集', edit_user_registration_path, class:'navbar-link'} | #{link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'navbar-link'}
+          -else
+            #{link_to 'ユーザー登録', new_user_registration_path, class:'navbar-link'} | #{link_to 'ログイン', new_user_session_path, class:'navbar-link'}
+        -if notice
+          %p.alert.alert-notice=notice
+        -if alert
+          %p.alert.alert-error=error
+      %section
+        = yield
+      %aside
+      %footer
