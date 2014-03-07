@@ -148,6 +148,11 @@ CODE
 # install gems
 run 'bundle install --path vendor/bundle'
 
+# set Japanese locale
+generate 'i18n_locale ja'
+run 'rm -rf config/locales/ja.yml'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/ja.yml -P config/locales/'
+
 # set config/application.rb
 application  do
   %q{
@@ -190,11 +195,6 @@ file 'config/initializers/secret_token.rb', <<-FILE
 #{@app_name.classify}::Application.config.secret_key_base = ENV['SECRET_KEY_BASE'] || '#{`rake secret`}'
 FILE
 
-# set Japanese locale
-generate 'i18n_locale ja'
-# run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
-run 'rm -rf config/locales/ja.yml'
-run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/ja.yml -P config/locales/'
 
 # application.js(turbolink setting)
 run 'rm -rf app/assets/javascripts/application.js'
