@@ -204,6 +204,8 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/j
 # # Bootstrap/Bootswach/Font-Awesome
 run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesheets/'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/stylesheets/datepicker.css -P app/assets/stylesheets/'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.ja.js -P app/assets/javascripts/'
+run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.js -P app/assets/javascripts/'
 generate 'bootstrap:layouts application fixed'
 insert_into_file 'app/assets/stylesheets/application.css',%(
 *= require font-awesome
@@ -344,7 +346,7 @@ if yes?('Deviseをモデル:Userでインストールしますか?')
   run 'bundle exec rails generate devise user'
   run 'bundle exec rake db:migrate'
   run 'bundle exec rails generate devise:views'
-  run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
+  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/devise.ja.yml -P config/locales/'
   insert_into_file 'app/controllers/application_controller.rb',%(
   before_action:authenticate_user!
   puts "● devise設定完了しました。"
