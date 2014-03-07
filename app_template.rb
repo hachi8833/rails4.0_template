@@ -336,7 +336,6 @@ run 'git flow init'
 
 # devise
 if yes?('Deviseをモデル:Userでインストールしますか?')
-  gem 'devise'
   gsub_file 'Gemfile', "# gem 'devise'", "gem 'devise'"
   run 'bundle install'
   run 'bundle exec rails generate devise:install'
