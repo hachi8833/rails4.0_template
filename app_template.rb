@@ -347,7 +347,10 @@ if yes?('Deviseをモデル:Userでインストールしますか?')
   run 'wget https://gist.github.com/kawamoto/4729292/raw/devise.ja.yml -P config/locales/'
   insert_into_file 'app/controllers/application_controller.rb',%(
   before_action:authenticate_user!
+  puts "● devise設定完了しました。"
 ), after: '  protect_from_forgery with: :exception'
+  puts "● application_controller.rbにdeviseのbefore_actionを追加しましたので、アプリケーション全体で認証が必要となっています。"
+  puts "● 必ずroute.rb で root_to を設定してから起動してください。"
 end
 
 puts "● 「be rails g scaffold 単数形のモデル名」を実行できる。"
