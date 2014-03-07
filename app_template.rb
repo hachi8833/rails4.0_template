@@ -207,9 +207,9 @@ run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/s
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.ja.js -P app/assets/javascripts/'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.js -P app/assets/javascripts/'
 generate 'bootstrap:layouts application fixed'
-insert_into_file 'app/assets/stylesheets/application.css',%(
-*= require font-awesome
-), after: '*= require_tree .'
+# insert_into_file 'app/assets/stylesheets/application.css',%(
+# *= require font-awesome
+# ), after: '*= require_tree .'
 # insert_into_file 'app/views/layouts/application.html.haml',%(
 # %script{:src=>'//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'}
 # %link{:href=>'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css', :rel=>'stylesheet'}
