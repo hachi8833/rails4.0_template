@@ -343,12 +343,12 @@ if yes?('Deviseをモデル:Userでインストールしますか?')
   run 'bundle exec rails generate devise:install'
   run 'rm -rf app/views/layouts/application.html.haml'
   insert_into_file 'config/environments/development.rb',%(
-  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.haml -P app/views/layouts/'
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 ), after: '  config.action_mailer.raise_delivery_errors = false'
   run 'bundle exec rails generate devise user'
   run 'bundle exec rake db:migrate'
   run 'bundle exec rails generate devise:views'
+  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.haml -P app/views/layouts/'
   run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/devise.ja.yml -P config/locales/'
   insert_into_file 'app/controllers/application_controller.rb',%(
   before_action: authenticate_user!
