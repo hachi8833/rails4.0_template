@@ -337,7 +337,7 @@ run 'git flow init'
 # devise
 if yes?('Deviseをモデル:Userでインストールしますか?')
   gem 'devise'
-  gsub_file 'Gemfile', "# gem 'devise' #ユーザー認証", 'gem 'devise' #ユーザー認証'
+  gsub_file 'Gemfile', "# gem 'devise' #ユーザー認証", "gem 'devise' #ユーザー認証"
   run 'bundle install'
   run 'bundle exec rails generate devise:install'
   run 'rm -rf app/views/layouts/application.html.yml'
