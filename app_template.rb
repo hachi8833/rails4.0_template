@@ -341,8 +341,8 @@ if yes?('Deviseをモデル:Userでインストールしますか?')
   gsub_file 'Gemfile', "# gem 'devise'", "gem 'devise'"
   run 'bundle install'
   run 'bundle exec rails generate devise:install'
-  run 'rm -rf app/views/layouts/application.html.yml'
-  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.yml -P app/views/layouts/'
+  run 'rm -rf app/views/layouts/application.html.haml'
+  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.haml -P app/views/layouts/'
   run 'bundle exec rails generate devise user'
   run 'bundle exec rake db:migrate'
   run 'bundle exec rails generate devise:views'
