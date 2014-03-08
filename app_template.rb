@@ -206,7 +206,9 @@ run 'wget http://bootswatch.com/spacelab/bootstrap.min.css -P app/assets/stylesh
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/stylesheets/datepicker.css -P app/assets/stylesheets/'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.ja.js -P app/assets/javascripts/'
 run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/assets/javascripts/bootstrap-datepicker.js -P app/assets/javascripts/'
-generate 'bootstrap:layouts application fixed'
+if yes?('bootstrapのメニューをレイアウト全体に追加しますか?')
+  generate 'bootstrap:layouts'
+end
 # insert_into_file 'app/assets/stylesheets/application.css',%(
 # *= require font-awesome
 # ), after: '*= require_tree .'
@@ -221,17 +223,17 @@ run 'rake haml:replace_erbs'
 
 gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 
-insert_into_file 'app/views/layouts/application.html.haml',%(
-    %meta{ :charset => "UTF-8" }'
-), after: '  %head'
-insert_into_file 'app/views/layouts/application.html.haml',%(
-    .container
-      %header
-      %section
-        = yield
-      %aside
-      %footer
-  ), after: '  %body'
+# insert_into_file 'app/views/layouts/application.html.haml',%(
+#     %meta{ :charset => "UTF-8" }'
+# ), after: '  %head'
+# insert_into_file 'app/views/layouts/application.html.haml',%(
+#     .container
+#       %header
+#       %section
+#         = yield
+#       %aside
+#       %footer
+#   ), after: '  %body'
 
 # Simple Form
 generate 'simple_form:install --bootstrap'
@@ -342,16 +344,16 @@ if yes?('Deviseをモデル:Userでインストールしますか?')
   run 'bundle install'
   run 'bundle exec rails generate devise:install'
   run 'rm -rf app/views/layouts/application.html.haml'
+  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.haml -P app/views/layouts/'
   insert_into_file 'config/environments/development.rb',%(
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 ), after: '  config.action_mailer.raise_delivery_errors = false'
   run 'bundle exec rails generate devise user'
   run 'bundle exec rake db:migrate'
   run 'bundle exec rails generate devise:views'
-  run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/app/views/layouts/application.html.haml -P app/views/layouts/'
   run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/locales/devise.ja.yml -P config/locales/'
   insert_into_file 'app/controllers/application_controller.rb',%(
-  before_action: authenticate_user!
+  before_action :authenticate_user!
 ), after: '  protect_from_forgery with: :exception'
 
   puts "● devise設定完了しました。"
