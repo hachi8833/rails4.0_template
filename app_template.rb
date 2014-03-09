@@ -46,7 +46,7 @@ gem 'figaro' # 秘密鍵などをENV経由で利用する https://github.com/las
 gem 'i18n_generators' # ja.ymlの取得と生成
 
 group :development do
-  gem 'rack-mini-profiler' #パフォーマンス測定
+# gem 'rack-mini-profiler' #パフォーマンス測定
   gem 'brakeman', :require => false #appディレクトリでbrakemanコマンドを実行してセキュリティチェック
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
@@ -310,7 +310,7 @@ insert_into_file 'spec/spec_helper.rb',%(
 ), after: "require 'rspec/rails'"
 
 insert_into_file 'config/environments/development.rb',%(
-  Rack::MiniProfiler.config.position = 'right'
+# Rack::MiniProfiler.config.position = 'right'
 
   config.after_initialize do
     Bullet.enable = true
@@ -383,3 +383,4 @@ puts "● モデル作成後にrails g i18n_translation jaを実行すると、�
 puts "● ブレークポイントを仕込みたいソースコード上にbinding.pryという文字列を仕込むことで、rails serverで起動したコンソール上でブレークポイントを通るときにpryによるデバッガが立ち上がる。"
 puts "● マイグレーションファイルの生成は「be rails g migration Addカラム名Toテーブル名 カラム名:型名」"
 puts "● Launchyをインストールしてあるので、RSpecのデバッグに save_and_open_pageが使える"
+puts "● appディレクトリでbrakemanコマンドを実行することでセキュリティチェックを行える"
