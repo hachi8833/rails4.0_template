@@ -79,6 +79,9 @@ group :test do
   gem 'poltergeist' #phantomjsをインストールする必要あり。スクショも撮れる
   gem 'simplecov', require: false #カバレッジ
   gem 'database_rewinder'   # テスト環境のテーブルをきれいにする
+  gem 'turnip' #ユーザー指向テスティング
+  gem 'turnip_formatter' # turnipログ整形
+  gem 'gnawrnip' #turnipエラーのスクリーンショットを撮る
 end
 
 group :doc do
