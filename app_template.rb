@@ -79,9 +79,9 @@ group :test do
   gem 'poltergeist' #phantomjsをインストールする必要あり。スクショも撮れる
   gem 'simplecov', require: false #カバレッジ
   gem 'database_rewinder'   # テスト環境のテーブルをきれいにする
-  gem 'turnip' #ユーザー指向テスティング
-  gem 'turnip_formatter' # turnipログ整形
-  gem 'gnawrnip' #turnipエラーのスクリーンショットを撮る
+  gem 'turnip' #ユーザー指向テスティング http://qiita.com/moriyaman/items/af2a0264adbaaa0d2029
+  gem 'turnip_formatter' # turnipログ整形 https://github.com/gongo/turnip_formatter
+  gem 'gnawrnip' #turnipエラーのスクリーンショットを撮る https://github.com/gongo/gnawrnip
 end
 
 group :doc do
@@ -387,3 +387,8 @@ puts "● ブレークポイントを仕込みたいソースコード上にbind
 puts "● マイグレーションファイルの生成は「be rails g migration Addカラム名Toテーブル名 カラム名:型名」"
 puts "● Launchyをインストールしてあるので、RSpecのデバッグに save_and_open_pageが使える"
 puts "● appディレクトリでbrakemanコマンドを実行することでセキュリティチェックを行える"
+puts "● rspec -r turnip_formatter --format RSpecTurnipFormatter --out report.html を実行することturnipの出力がフォーマットされる"
+puts "● gnawrnipでテストをキャプチャしたいときは以下をfeatureファイルに追加する"
+puts "● require 'gnawrnip'
+puts "● Gnawrnip.ready!"
+
