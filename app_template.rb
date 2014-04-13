@@ -389,6 +389,5 @@ puts "● Launchyをインストールしてあるので、RSpecのデバッグ�
 puts "● appディレクトリでbrakemanコマンドを実行することでセキュリティチェックを行える"
 puts "● rspec -r turnip_formatter --format RSpecTurnipFormatter --out report.html を実行することturnipの出力がフォーマットされる"
 puts "● gnawrnipでテストをキャプチャしたいときは以下をfeatureファイルに追加する"
-puts "● require 'gnawrnip'
+puts "● require 'gnawrnip"
 puts "● Gnawrnip.ready!"
-
