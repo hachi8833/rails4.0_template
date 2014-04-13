@@ -22,7 +22,7 @@ ruby '2.1.1'
 gem 'macaddr', '1.6.1'
 
 # regular gems http://www.ohmyenter.com/?p=371
-gem 'rails', '~> 4.0.2'
+gem 'rails', '~> 4.1'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails'
@@ -65,8 +65,8 @@ group :development, :test do
   gem 'hirb' #pryのSQLを整形
   gem 'hirb-unicode'
   gem 'rspec-rails'
-  gem 'spring'
-  gem 'spring-commands-rspec'
+  # gem 'spring'
+  # gem 'spring-commands-rspec'
 end
 
 group :test do
