@@ -67,6 +67,7 @@ group :development, :test do
   gem 'rspec-rails'
   # gem 'spring'
   # gem 'spring-commands-rspec'
+  gem 'whiny_validation' #バリデーションエラーをログに出力する http://p.tl/FW8O
 end
 
 group :test do
