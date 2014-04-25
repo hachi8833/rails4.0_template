@@ -68,6 +68,7 @@ group :development, :test do
   # gem 'spring'
   # gem 'spring-commands-rspec'
   gem 'whiny_validation' #バリデーションエラーをログに出力する http://p.tl/FW8O
+  gem 'fuubar' #RSpec出力を見やすくフォーマット
 end
 
 group :test do
