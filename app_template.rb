@@ -224,7 +224,7 @@ end
 # ), after: '= csrf_meta_tags'
 
 # HAML
-run 'rake haml:replace_erbs'
+run 'bundle exec rake haml:replace_erbs'
 
 gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 
