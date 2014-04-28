@@ -65,8 +65,8 @@ group :development, :test do
   gem 'hirb' #pryのSQLを整形
   gem 'hirb-unicode'
   gem 'rspec-rails'
-  # gem 'spring'
-  # gem 'spring-commands-rspec'
+  gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'whiny_validation' #バリデーションエラーをログに出力する http://p.tl/FW8O
   gem 'fuubar' #RSpec出力を見やすくフォーマット
 end
@@ -183,6 +183,7 @@ application  do
       g.helper_specs false
       g.request_specs false # パブリックAPIのテスト用
       g.feature_specs true #結合テスト用
+      g.acceptance_specs true #受入テスト用
       g.decorator_specs true
       g.assets false
       g.helper false
