@@ -93,6 +93,7 @@ end
 group :production, :staging do
   gem 'unicorn' # 本番用Webサーバー
   # gem 'rails_12factor'   # ログ保存先変更、静的アセット Heroku 向けに調整
+  gem 'exception_notification' #エラー時にメールを送信する。メールサーバーを設定する必要あり https://github.com/smartinez87/exception_notification
 end
 
 # オプション ############
