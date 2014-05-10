@@ -16,13 +16,13 @@ run 'rm -rf Gemfile'
 file 'Gemfile', <<-CODE
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.2'
 
 #hamlが動くようにするためのおまじない
 gem 'macaddr', '1.6.1'
 
 # regular gems http://www.ohmyenter.com/?p=371
-gem 'rails', '~> 4.1'
+gem 'rails', '~> 4.1.1'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails'
