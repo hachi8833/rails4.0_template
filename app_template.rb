@@ -22,12 +22,12 @@ ruby '2.1.2'
 gem 'macaddr', '1.6.1'
 
 # regular gems http://www.ohmyenter.com/?p=371
-gem 'rails', '~> 4.1'
+gem 'rails', '~> 4.1.1'
 gem 'haml-rails'
 gem 'mysql2'
-gem 'sass-rails'
-gem 'uglifier'   #JavaScriptの圧縮&難読化
-gem 'coffee-rails'
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'   #JavaScriptの圧縮&難読化
+gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
@@ -87,7 +87,7 @@ group :test do
 end
 
 group :doc do
-  gem 'sdoc', require: false
+  gem 'sdoc', '~> 0.4.0', require: false
 end
 
 group :production, :staging do
@@ -109,8 +109,8 @@ end
 # gem 'jpmobile' #スマホとPCのビュー自動切り替え
 # gem 'rails_autolink' #URLを自動的にリンク化する
 # gem 'rails-flog' # PG/MySQL ログフォーマッタ
-# gem 'bcrypt-ruby', '~> 3.1.2' # ActiveModel でパスワード暗号化に使用。http://bakunyo.hatenablog.com/entry/2013/05/26/bcrypt-ruby%E3%82%92Rails%E3%81%A7%E4%BD%BF%E3%81%86
-# gem 'capistrano', group: :development # デプロイ自動化 http://labs.gree.jp/blog/2013/12/10084/
+# gem 'bcrypt', '~> 3.1.7' # ActiveModel でパスワード暗号化に使用。http://bakunyo.hatenablog.com/entry/2013/05/26/bcrypt-ruby%E3%82%92Rails%E3%81%A7%E4%BD%BF%E3%81%86
+# gem 'capistrano-rails', group: :development # デプロイ自動化 http://labs.gree.jp/blog/2013/12/10084/
 # SourceMaps (圧縮されたJavaScriptのバグをブラウザ上でトラックする) http://www.publickey1.jp/blog/12/javascriptcoffeescriptsource_maps.html
   # gem 'coffee-rails-source-maps'
   # gem 'sass-rails-source-maps'
