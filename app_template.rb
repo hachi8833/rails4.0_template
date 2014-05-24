@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
 gem 'jbuilder'   # JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
+gem 'nokogiri' # HTML/XMLパーサー http://nokogiri.org/
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -118,7 +119,6 @@ end
 # gem 'kaminari' # ページ切り替え処理 http://memo.yomukaku.net/entries/238
 # gem 'newrelic_rpm' # パフォーマンス管理・サービス監視 NewRelic https://github.com/newrelic/rpm
 # gem 'airbrake' # エラー時にメール通知 http://www.slideshare.net/morimorihoge1/gem-24158289
-# gem 'nokogiri' # HTML/XMLパーサー http://nokogiri.org/
 # gem 'delayed_job' # 重たい処理を非同期で実行 http://blog.nzm-o.com/item/222
 # gem 'whenever' # cron処理 http://morizyun.github.io/blog/whenever-gem-rails-ruby-capistrano/
 # gem 'paperclip' # 添付ファイルをActiveRecord透過で保存できる (ImageMagick必要) https://github.com/thoughtbot/paperclip
