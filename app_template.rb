@@ -18,6 +18,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
+# nokogiriインストールエラー回避のための環境変数設定
+ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
+
 #hamlが動くようにするためのおまじない
 gem 'macaddr', '1.6.1'
 
