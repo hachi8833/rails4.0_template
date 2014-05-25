@@ -21,7 +21,6 @@ ruby '2.1.2'
 
 # nokogiriインストールエラー回避のための環境変数設定
 ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
-gem 'nokogiri' # HTML/XMLパーサー http://nokogiri.org/
 
 #hamlが動くようにするためのおまじない
 gem 'macaddr', '1.6.1'
@@ -116,6 +115,7 @@ end
 # gem 'rails-flog' # PG/MySQL ログフォーマッタ
 # gem 'bcrypt', '~> 3.1.7' # ActiveModel でパスワード暗号化に使用。http://bakunyo.hatenablog.com/entry/2013/05/26/bcrypt-ruby%E3%82%92Rails%E3%81%A7%E4%BD%BF%E3%81%86
 # gem 'capistrano-rails', group: :development # デプロイ自動化 http://labs.gree.jp/blog/2013/12/10084/
+# gem 'nokogiri' # HTML/XMLパーサー http://nokogiri.org/
 # SourceMaps (圧縮されたJavaScriptのバグをブラウザ上でトラックする) http://www.publickey1.jp/blog/12/javascriptcoffeescriptsource_maps.html
   # gem 'coffee-rails-source-maps'
   # gem 'sass-rails-source-maps'
