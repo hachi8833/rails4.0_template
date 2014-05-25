@@ -21,3 +21,20 @@ This Rails 4.0 Application Template is just for private use, and is conscious of
 * configure RSpec
 * configure spring/guard
 * configure git flow
+
+
+
+以下のライブラリを事前にインストールしておくこと
+* libxml2 libxslt libiconv
+
+ただしMacとHomebrew 0.9だとlibiconvがうまく入らないことがあるので、以下のような感じでインストール
+
+* brew install libxml2 libxslt
+* brew link libxml2 libxslt
+
+* wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.1.tar.gz
+* tar xvfz libiconv-1.13.1.tar.gz
+* cd libiconv-1.13.1
+* ./configure --prefix=/usr/local/Cellar/libiconv/1.13.1
+* make
+* sudo make install
