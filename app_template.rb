@@ -55,6 +55,7 @@ group :development do
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
   gem 'twitter-bootstrap-rails' #generate専用
+  gem "meta_request" #ChromeでRailsデバッグ用タブ追加
 end
 
 group :development, :test do
