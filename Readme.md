@@ -41,13 +41,15 @@ This Rails 4.0 Application Template is just for private use, and is conscious of
 
 ## Usage
 
-作成方法
+### 作成方法
+
 1. プロジェクト用のディレクトリにRakefileを置く
 2. rake new appname=アプリ名
 これでデータベース作成も含めてすべて自動で実行される
 (newのかわりにadd、createでもよい)
 
-削除方法
+### 削除方法
+
 1. rake kill appname=アプリ名
 (killのかわりに clear、remove、delete、destroyでもよい)
 これでデータベースも含めてすべて削除される
