@@ -3,6 +3,7 @@
 
 RAILS_DIR = "~/dev/rails"
 REPOSITORY = "https://raw.github.com/hachi8833/rails4.0_template/master/app_template.rb"
+REPOSITORY_F = "https://raw.github.com/hachi8833/rails4.0_template/master/app_template-f.rb"
 DEL_OPTION = ""
 
 app = ENV['app']
@@ -20,6 +21,12 @@ desc 'Rail4 アプリ "#{app}" を作成する(デフォルト)'
 task :create do
   sh "cd #{RAILS_DIR}"
   sh "rails new #{app} --database=mysql --skip-test-unit --skip-bundle -m #{REPOSITORY}"
+end
+
+desc 'Rail4 アプリ "#{app}" を作成する(Foundation版)'
+task :createf do
+  sh "cd #{RAILS_DIR}"
+  sh "rails new #{app} --database=mysql --skip-test-unit --skip-bundle -m #{REPOSITORY_F}"
 end
 
 desc 'Rails4アプリ "#{app}" を削除する'
