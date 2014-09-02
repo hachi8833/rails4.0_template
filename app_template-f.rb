@@ -37,7 +37,6 @@ gem 'turbolinks'
 gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
 gem 'jbuilder'   # JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
 
-#gem 'bootstrap-sass'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
 
@@ -228,8 +227,9 @@ gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 #       %footer
 #   ), after: '  %body'
 
-# Simple Form
-generate 'simple_form:install --bootstrap'
+# Foundation & Simple Form
+generate 'layout:install foundation5'
+generate 'simple_form:install --foundation'
 
 run 'https://raw2.github.com/MiraitSystems/enju_trunk/master/config/locales/simple_form.ja.yml -P config/locales/'
 
@@ -238,7 +238,6 @@ generate 'figaro:install'
 
 # Kaminari config
 # generate 'kaminari:config'
-# generate 'kaminari:views  bootstrap'
 
 # run 'rm -rf app/view/kaminari/_paginator.html.haml'
 # file 'app/view/kaminari/_paginator.html.haml', <<-FILE
@@ -325,9 +324,6 @@ gsub_file 'Guardfile', 'guard :rspec do', "guard :rspec, cmd: 'bundle exec sprin
 
 run 'bundle install'
 
-run 'rm -rf config/initializers/simple_form_bootstrap.rb'
-run 'wget https://raw.github.com/hachi8833/rails4.0_template/master/config/initializers/simple_form_bootstrap.rb -P config/initializers/'
-
 # git flow init
 run 'git flow init'
 
@@ -368,8 +364,6 @@ binary  バイナリデータ
 boolean Boolean型"
 
 puts "● 中間テーブルでは主キーを無効化し、タイムスタンプ列を削除すること"
-
-puts  "● bootstrapをscaffoldのビューに適用するなら、scaffold実行後に「rails g bootstrap:themed コントローラ」(コントローラ名は大文字で始まる複数形)を実行すること"
 
 puts "● マイグレーション後、bundle exec annotateを実行するとモデルにスキーマ情報が追記される"
 puts "● モデル作成後にrails g i18n_translation jaを実行すると、ローカライズ用translation_ja.ymlが生成される"
