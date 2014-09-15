@@ -30,6 +30,7 @@ gem 'rails', '~> 4.1.1'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 gem 'uglifier', '>= 1.3.0'   #JavaScriptの圧縮&難読化
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -56,6 +57,7 @@ group :development do
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
   gem 'twitter-bootstrap-rails' #generate専用
   gem "meta_request" #ChromeでRailsデバッグ用タブ追加
+  gem 'web-console' #ブラウザから使用できるコンソール。当然developmentのみ
 end
 
 group :development, :test do

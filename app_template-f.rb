@@ -30,6 +30,7 @@ gem 'rails', '~> 4.1.1'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 gem 'uglifier', '>= 1.3.0'   #JavaScriptの圧縮&難読化
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -54,6 +55,7 @@ group :development do
   gem 'rails_best_practices' # リファクタリングのアシスタント
   gem 'bullet' #N+1問題を検出 http://p.tl/Ev-s
   gem "meta_request" #ChromeでRailsデバッグ用タブ追加
+  gem 'web-console' #ブラウザから使用できるコンソール。当然developmentのみ
 end
 
 group :development, :test do
@@ -157,6 +159,10 @@ CODE
 # install gems
 run 'bundle install --path vendor/bundle'
 
+# Foundation & Simple Form
+generate 'layout:install foundation5'
+generate 'simple_form:install --foundation'
+
 # set Japanese locale
 generate 'i18n_locale ja'
 run 'rm -rf config/locales/ja.yml'
@@ -226,10 +232,6 @@ gsub_file 'app/views/layouts/application.html.haml', /= yield/, ''
 #       %aside
 #       %footer
 #   ), after: '  %body'
-
-# Foundation & Simple Form
-generate 'layout:install foundation5'
-generate 'simple_form:install --foundation'
 
 run 'https://raw2.github.com/MiraitSystems/enju_trunk/master/config/locales/simple_form.ja.yml -P config/locales/'
 
