@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks' # jqueryでのturbolinksサポート
 gem 'jbuilder'   # JSON APIをビルドする。Read more: https://github.com/rails/jbuilder
+gem "autoprefixer-rails" # css に自動でベンダープレフィックスを与えてくれる
 
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
