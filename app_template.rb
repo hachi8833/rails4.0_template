@@ -16,8 +16,9 @@ CODE
 run 'rm -rf Gemfile'
 file 'Gemfile', <<-CODE
 source 'https://rubygems.org'
+source 'https://rails-assets.org'  # ●https://rails-assets.org/ に合わせて今度書き換えよう
 
-ruby '2.1.2'
+ruby '2.1.4'
 
 # nokogiriインストールエラー回避のための環境変数設定
 ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
