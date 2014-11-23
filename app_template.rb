@@ -18,7 +18,7 @@ file 'Gemfile', <<-CODE
 source 'https://rubygems.org'
 source 'https://rails-assets.org'  # ●https://rails-assets.org/ に合わせて今度書き換えよう
 
-ruby '2.1.4'
+ruby '2.1.5'
 
 # nokogiriインストールエラー回避のための環境変数設定
 ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
@@ -27,7 +27,7 @@ ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
 gem 'macaddr', '1.6.1'
 
 # regular gems http://www.ohmyenter.com/?p=371
-gem 'rails', '~> 4.1.1'
+gem 'rails', '~> 4.1.8'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
