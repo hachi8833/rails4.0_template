@@ -28,6 +28,7 @@ gem 'macaddr', '1.6.1'
 
 # regular gems http://www.ohmyenter.com/?p=371
 gem 'rails', '~> 4.1.8'
+gem 'railties'
 gem 'haml-rails'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.3'
