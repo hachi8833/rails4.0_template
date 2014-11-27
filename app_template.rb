@@ -79,6 +79,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'whiny_validation' #バリデーションエラーをログに出力する http://p.tl/FW8O
   gem 'fuubar' #RSpec出力を見やすくフォーマット
+  gem 'did_you_mean'
 end
 
 group :test do
@@ -141,6 +142,7 @@ end
 # gem 'doorkeeper' #OAuth2認証
 # gem 'friendly_id' #URLをクエリ形式にする
 # gem 'acts_as_list' #リストの並べ替えや移動を行えるようにする https://github.com/swanandp/acts_as_list
+# gem 'activehash' #静的データをモデルのように扱える http://kotatu.org/blog/2014/10/09/active-hash-gem/
 
 group :development do
   gem 'erb2haml' # Converter erb => haml
